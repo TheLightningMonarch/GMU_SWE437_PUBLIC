@@ -5,5 +5,7 @@ The test code should run properly with JUnit 4. We used IntelliJ to run the test
 The test code for Assignment 5 is located in HW5Tests.java, so it would be:
 
 javac -cp conversion.java
+
 javac -cp junit-4.13.1.jar;. HW5Tests.java
+
 java -cp junit-4.13.1.jar;hamcrest-core-1.3.jar;. org.junit.runner.JUnitCore  HW5Tests
