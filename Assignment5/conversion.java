@@ -527,6 +527,7 @@ public class conversion
     public float convertC2K(float num1){
         float x = num1 + (float)273.15;
         return x;
+    }
 
     private float convertkmph2mph(float num){
         float ret = 0;
