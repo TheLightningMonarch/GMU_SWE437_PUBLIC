@@ -259,7 +259,8 @@ public class conversion
                 break;
 
             case 'S':
-                //TODO: Need to add Chris function here
+                convertedValue = convert.convertkmph2mph(toBeConverted);
+                unit = "mi/hr";
                 break;
 
             case 'T':
@@ -526,5 +527,9 @@ public class conversion
     public float convertC2K(float num1){
         float x = num1 + (float)273.15;
         return x;
+
+    private float convertkmph2mph(float num){
+        float ret = 0;
+        return ret;
     }
 }
