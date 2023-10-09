@@ -36,7 +36,7 @@ public class conversion
     private static Scanner scnr = new Scanner(System.in);
 
     private static char options[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-            'R', 'S'};
+            'R', 'S', 'T', 'U'};
 
     //Main looping logic for the menu/input/conversion cycle
     public static void main(String args[]){
@@ -99,15 +99,21 @@ public class conversion
         scnr.close();
     }
 
-    public static int getNumDigits(){
+    public static int getNumDigits() throws NumberFormatException{
         int numDigits = -1;
 
-        System.out.print("Enter number of digits to round to (0 - 4): ");
         while (numDigits < 0 || numDigits > 4){
-            numDigits = scnr.nextInt();
+            System.out.print("Enter number of digits to round to (0 - 4): ");
+            try {
+                numDigits = Integer.parseInt(scnr.nextLine());
 
-            if (numDigits < 0 || numDigits > 4){
-                System.out.println("Invalid selection. Please try again.");
+                if (numDigits < 0 || numDigits > 4){
+                    System.out.println("Invalid selection. Please try again.");
+                }
+            }
+            catch (NumberFormatException e){
+                System.out.println("Please enter a numeric value.");
+                continue;
             }
         }
 
@@ -129,9 +135,9 @@ public class conversion
     public static void printMenu(){
         String measurements[]   = {"Fahrenheit", "Celsius", "Inches", "Centimeters", "Feet", "Meters",
                 "Miles", "Kilometers", "Gallons", "Liters", "Ounces", "Grams", "Pounds", "Kilograms", "Hours", "Seconds",
-                "Miles per hour", "Kilometers per hour"};
+                "Miles per hour", "Kilometers per hour", "Kelvin", "Celsius"};
         String abbreviations[]  = {"F", "C", "in", "cm", "ft", "m", "mi", "km", "gal", "L", "oz", "g", "lb", "kg", "hr",
-                "s", "mi/hr", "km/hr"};
+                "s", "mi/hr", "km/hr", "K", "C"};
 
         //Display the menu for the user
         System.out.println("Enter the associated character(s) with each option to select a conversion.");
@@ -252,6 +258,20 @@ public class conversion
                 unit = "km/hr";
                 break;
 
+            case 'S':
+                //TODO: Need to add Chris function here
+                break;
+
+            case 'T':
+                convertedValue = convert.convertK2C(toBeConverted);
+                unit = "C";
+                break;
+
+            case 'U':
+                convertedValue = convert.convertC2K(toBeConverted);
+                unit = "K";
+                break;
+
             default:
                 System.out.println("Should not be reached.");
                 convertedValue = -1;
@@ -260,15 +280,24 @@ public class conversion
     }
 
     //Gets the value to be converted from user keyboard input
-    public static String getInputMeasurement (){
+    public static String getInputMeasurement () throws NumberFormatException{
         float userInput = 0;
         String finalValue = "";
         Scanner measurementScnr = new Scanner(System.in);
 
         //Get valid float input from user
-        System.out.print("Enter the value to be converted: ");
-        userInput = measurementScnr.nextFloat();
-        System.out.println();
+        while (true) {
+            try {
+                System.out.print("Enter the value to be converted: ");
+                userInput = Float.parseFloat(measurementScnr.nextLine());
+                System.out.println();
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a number value only.");
+                continue;
+            }
+            break;
+        }
+
 
         //Convert it to string because the conversion methods take String input
         finalValue = Float.toString(userInput);
@@ -487,5 +516,15 @@ public class conversion
         num2 = (float) (num1 * 1.609344);
 
         return num2;
+    }
+
+    public float convertK2C(float num1){
+        float x = num1 - (float)273.15;
+        return x;
+    }
+
+    public float convertC2K(float num1){
+        float x = num1 + (float)273.15;
+        return x;
     }
 }

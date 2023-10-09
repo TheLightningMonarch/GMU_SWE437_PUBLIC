@@ -16,6 +16,16 @@ public class HW5Tests {
     float expected;
     char selection;
 
+    private float value, value2;
+
+    @Before
+    public void setUp() throws Exception{
+        convert = new conversion();
+        value = 50;
+        value2 = 100;
+    }
+
+    //MPH to KMPH Tests
     @Test
     public void mph_to_kmph_50(){
         input = 50;
@@ -30,6 +40,44 @@ public class HW5Tests {
         input = 80;
         selection = 'R';
         expected = (float)128.748;
+
+        testLogic(input, selection, expected);
+    }
+
+    //Kelvin to Celsius tests
+    @Test
+    public void testK2C(){
+        expected = (float)-223.15;
+        input = value;
+        selection = 'T';
+
+        testLogic(input, selection, expected);
+    }
+
+    @Test
+    public void test_different_val_K2C(){
+        expected = (float)-173.15;
+        input = value2;
+        selection = 'T';
+
+        testLogic(input, selection, expected);
+    }
+
+    //Celsius to Kelvin tests
+    @Test
+    public void testC2K(){
+        expected = (float) 323.15;
+        input = value;
+        selection = 'U';
+
+        testLogic(input, selection, expected);
+    }
+
+    @Test
+    public void test_different_val_C2K(){
+        expected = (float)373.15;
+        input = value2;
+        selection = 'U';
 
         testLogic(input, selection, expected);
     }
