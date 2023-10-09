@@ -12,74 +12,68 @@ public class HW5Tests {
 
     private conversion convert;
     float response;
-    float input;
+    float input1;
+    float input2;
     float expected;
     char selection;
 
-    private float value, value2;
 
     @Before
     public void setUp() throws Exception{
         convert = new conversion();
-        value = 50;
-        value2 = 100;
+        input1 = 50;
+        input2 = 100;
     }
 
     //MPH to KMPH Tests
     @Test
     public void mph_to_kmph_50(){
-        input = 50;
         selection = 'R';
         expected = (float)80.467;
 
-        testLogic(input, selection, expected);
+        testLogic(input1, selection, expected);
     }
 
     @Test
     public void mph_to_kmph_80(){
-        input = 80;
         selection = 'R';
-        expected = (float)128.748;
+        expected = (float)160.934;
 
-        testLogic(input, selection, expected);
+        testLogic(input2, selection, expected);
     }
 
     //Kelvin to Celsius tests
     @Test
     public void testK2C(){
         expected = (float)-223.15;
-        input = value;
         selection = 'T';
 
-        testLogic(input, selection, expected);
+        testLogic(input1, selection, expected);
     }
 
     @Test
     public void test_different_val_K2C(){
         expected = (float)-173.15;
-        input = value2;
         selection = 'T';
 
-        testLogic(input, selection, expected);
+        testLogic(input2, selection, expected);
     }
 
     //Celsius to Kelvin tests
     @Test
     public void testC2K(){
         expected = (float) 323.15;
-        input = value;
         selection = 'U';
 
-        testLogic(input, selection, expected);
+        testLogic(input1, selection, expected);
     }
 
     @Test
     public void test_different_val_C2K(){
         expected = (float)373.15;
-        input = value2;
         selection = 'U';
 
-        testLogic(input, selection, expected);
+        testLogic(input2, selection, expected);
     }
 
     public void testLogic(float input, char selection, float expected){
