@@ -25,6 +25,21 @@ public class HW5Tests {
         input2 = 100;
     }
 
+    //Acceptance test for MPH to KMPH to MPH again
+    @Test
+    public void acceptance_mph_kmph(){
+        float userInput = 123;
+        float result;
+
+        //Convert mph -> kmph
+        result = conversion.callConversion('R', Float.toString(userInput));
+
+        //Convert kmph -> mph
+        result = selectAndRound(result, 'S', 0);
+        checkExpected(userInput, result, userInput);
+        
+    }
+
     //MPH to KMPH Tests
     @Test
     public void mph_to_kmph_50(){
@@ -57,6 +72,20 @@ public class HW5Tests {
         expected = (float)62.137;
 
         testLogic(input2, selection, expected);
+    }
+    
+    //Acceptance test for K -> C -> K
+    @Test
+    public void acceptance_K_C_K(){
+        float userInput = 123;
+        float result;
+
+        //Convert K -> C
+        result = conversion.callConversion('T', Float.toString(userInput));
+
+        //Convert C -> K
+        result = selectAndRound(result, 'U', 0);
+        checkExpected(userInput, result, userInput);
     }
 
     //Kelvin to Celsius tests
