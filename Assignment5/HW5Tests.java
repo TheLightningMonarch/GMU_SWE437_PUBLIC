@@ -35,7 +35,7 @@ public class HW5Tests {
     }
 
     @Test
-    public void mph_to_kmph_80(){
+    public void mph_to_kmph_100(){
         selection = 'R';
         expected = (float)160.934;
 
