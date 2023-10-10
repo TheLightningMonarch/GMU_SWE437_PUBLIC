@@ -509,7 +509,8 @@ public class conversion
 
         return(num2);
     }
-
+    
+    //Methods added in HW5:
     private float convertmph2kmph (float num1){
         float num2;
 
@@ -519,18 +520,18 @@ public class conversion
         return num2;
     }
 
-    public float convertK2C(float num1){
+    private float convertK2C(float num1){
         float x = num1 - (float)273.15;
         return x;
     }
 
-    public float convertC2K(float num1){
+    private float convertC2K(float num1){
         float x = num1 + (float)273.15;
         return x;
     }
 
     private float convertkmph2mph(float num){
-        float ret = 0;
+        float ret = (float)(num * 0.621371);
         return ret;
     }
 }

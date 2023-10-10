@@ -41,6 +41,23 @@ public class HW5Tests {
 
         testLogic(input2, selection, expected);
     }
+    
+    //KMPH to MPH tests
+    @Test
+    public void kmph_to_mph_50(){
+        selection = 'S';
+        expected = (float)31.069;
+
+        testLogic(input1, selection, expected);
+    }
+
+    @Test
+    public void kmph_to_mph_100(){
+        selection = 'S';
+        expected = (float)62.137;
+
+        testLogic(input2, selection, expected);
+    }
 
     //Kelvin to Celsius tests
     @Test
@@ -75,7 +92,8 @@ public class HW5Tests {
 
         testLogic(input2, selection, expected);
     }
-
+    
+    //Helper methods
     public void testLogic(float input, char selection, float expected){
         //Compute selection and round it
         response = selectAndRound(input, selection, 3);
